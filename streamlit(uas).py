@@ -10,7 +10,7 @@ unique_items = list(set(item for sublist in itemsets for item in sublist))
 transaction_matrix = pd.DataFrame(0, columns=unique_items, index=range(len(transactions)))
 
 for i, transaction in enumerate(transactions):
-  transaction_matrix.loc[i, transaction] = 1
+  transaction_matrix.loc[i, transaction] 
 
   
 st.title('Analisis Tranjjjsaksi ')

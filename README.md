@@ -1,3 +1,4 @@
+
 # Laporan Machine Learning
 ### Nama  : Rohmat
 ### NIM   : 211351131
@@ -184,6 +185,7 @@ fig.show()
 
 ## Preprocessing
 
+Membaca dataset nya
 ```bash
 path=('supermarket/GroceryStoreDataSet.csv')
 df = pd.read_csv(path,names = ['items'], sep = ',')
@@ -195,6 +197,7 @@ df_1  = df['items'].apply(lambda x : x.split(','))
 df_1.head(3)
 ```
 
+membuat list baru yang berisi groceries setiap transaksi
 ```bash
 liste = []
 
@@ -204,7 +207,7 @@ for i in range(len(df_1)):
     liste.append(x)
 ```
 
-
+Mengkonversi dataframe ke list
 ```bash
 encoder = TransactionEncoder()
 pred = encoder.fit_transform(liste)

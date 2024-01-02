@@ -13,7 +13,7 @@ for i, transaction in enumerate(transactions):
   transaction_matrix.loc[i, transaction] = 1
 
   
-st.title('Analisis Transaksi ')
+st.title('Analisis Tranjjjsaksi ')
 selected_item = st.selectbox('Pilih produk:', unique_items)
 selected_item_counts = transaction_matrix[transaction_matrix[selected_item] == 1].sum()
 total_transactions = len(transaction_matrix)

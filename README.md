@@ -106,7 +106,6 @@ df
 ## Exploratory Data Analysis (EDA)
 Pada tahap eksploratory data analysis (EDA) langkah awal kita bisa mengecek korelasi antar variabel
 ```bash
-df = pd.DataFrame(data)
 transactions = df['NAME ITEMS'].str.split(',')
 one_hot_df = pd.get_dummies(transactions.apply(pd.Series).stack()).sum(level=0)
 plt.figure(figsize=(12, 8))
@@ -118,7 +117,6 @@ plt.show()
 
 Lalu kita bisa melihat Frequencies kemunculan item yang paling banyak dalam data transaksi
 ```bash
-df = pd.DataFrame(data)
 df['items_list'] = df['NAME ITEMS'].apply(lambda x: x.split(','))
 all_items = [item for sublist in df['items_list'] for item in sublist]
 item_counts = pd.Series(all_items).value_counts()
@@ -135,7 +133,6 @@ plt.show()
 
 Selanjutnya kita akan lakukan perbandingan kemunculan item dengan persentase 
 ```bash
-df = pd.DataFrame(data)
 items_to_compare = ['JAM', 'MAGGI', 'SUGER', 'COFFEE', 'CHEESE', 'TEA', 'BOURNVITA', 'CORNFLAKES', 'BREAD', 'BISCUIT', 'MILK']
 item_counts = df['NAME ITEMS'].apply(lambda x: pd.Series(x.split(','))).stack().value_counts()
 item_counts = item_counts[item_counts.index.isin(items_to_compare)]
@@ -156,7 +153,6 @@ plt.show()
 Lalu kita akan bandingkan menggunakan Pie plot , produk mana yang sering di beli pelanggan
 
 ```bash
-df = pd.DataFrame(data)
 item_totals = df['NAME ITEMS'].str.split(',', expand=True).stack().value_counts()
 
 # Pie plot perbandingan pembelian
@@ -169,7 +165,6 @@ plt.show()
 
 kita dapat melihat item paling banyak terjual dengan tree map
 ```bash
-df = pd.DataFrame(data)
 item_totals = df['NAME ITEMS'].str.split(',', expand=True).stack().value_counts().reset_index()
 item_totals.columns = ['itemDescription', 'count']
 
@@ -230,8 +225,8 @@ rules
 ```
 
 ```bash
-rules['antecedent'] = rules['antecedents'].apply(lambda antecedents : list(antecedents)[0])
-rules['consequent'] = rules['consequents'].apply(lambda consequents : list(consequents)[0])
+rules['antecedents']=rules['antecedents'].apply(lambda a: ','.join(list(a)))
+rules['consequents']=rules['consequents'].apply(lambda a: ','.join(list(a)))
 rules['rule'] = rules.index
 rules
 ```
@@ -248,27 +243,57 @@ rules.sort_values('confidence',ascending = False).head(5)
 ## Visualisasi Hasil Algoritma
 
 ```bash
-fig, ax = plt.subplots(figsize = (30,30))
-pivot = rules.pivot(index = 'consequents',
-                   columns = 'antecedents', values= 'lift')
-sns.heatmap(pivot, annot=True, cmap='YlGnBu', cbar=True, fmt='.2f', annot_kws={"size": 14},
-            cbar_kws={'label': 'Lift Value'})
-plt.show()
+support_table = rules.pivot(index='consequents', columns='antecedents', values='support')
+support_table.shape
 ```
-![image](https://github.com/RohmatIF/Rohmat_ML_Apriori_UAS/assets/147891420/8f53da97-34eb-43af-b704-966fe86d1f0f)
-
 
 ```bash
-fig = px.scatter(x=rules['support'], y=rules['confidence'])
+fig=ff.create_annotated_heatmap(support_table.to_numpy().round(2),x=list(support_table.columns),y=list(support_table.index),colorscale=['violet','indigo','blue'],font_colors=['white','white','white'])
+fig.update_layout(template='simple_white',
+    autosize=False,
+    width=1600,
+    height=1600,
+    title="Support Matrix",
+    xaxis_title='Consequents',
+    yaxis_title='Antecedents',
+    legend_title="Legend Title",
+    font=dict(
+        family="Caliber",
+        size=14,
+        color="Black"
+    )
+)
+fig.update_layout(title_x=0.22, title_y=0.98)
+fig.update_traces(showscale=True)
 fig.show()
 ```
+![newplot](https://github.com/RohmatIF/Rohmat_ML_Apriori_UAS/assets/147891420/c7265a0c-579b-452e-99e0-efdf213f77e0)
+
+
 
 
 ```bash
-cords = rules[['antecedent','consequent','rule']]
-
-parallel_coordinates(cords,'rule',colormap = 'ocean')
+conf=rules.pivot(index='antecedents', columns='consequents', values='confidence')
+fig=ff.create_annotated_heatmap(conf.to_numpy().round(2),x=list(conf.columns),y=list(conf.index),colorscale=['green','orange','red'],font_colors=['white','white','white'])
+fig.update_layout(template='simple_white',
+    autosize=False,
+    width=1600,
+    height=1600,
+    title="Confidence Matrix",
+    xaxis_title='Consequents',
+    yaxis_title='Antecedents',
+    legend_title="Legend Title",
+    font=dict(
+        family="Caliber",
+        size=14,
+        color="Black"
+    )
+)
+fig.update_layout(title_x=0.22, title_y=0.98)
+fig.update_traces(showscale=True)
+fig.show()
 ```
-![image](https://github.com/RohmatIF/Rohmat_ML_Apriori_UAS/assets/147891420/734c5b22-3732-4e05-b53f-f133fa2f7585)
+![newplot (1)](https://github.com/RohmatIF/Rohmat_ML_Apriori_UAS/assets/147891420/86814b0f-3818-4798-a182-446d178f9af6)
+
 
 

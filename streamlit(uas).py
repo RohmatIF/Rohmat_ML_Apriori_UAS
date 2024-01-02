@@ -10,9 +10,8 @@ unique_items = list(set(item for sublist in itemsets for item in sublist))
 transaction_matrix = pd.DataFrame(0, columns=unique_items, index=range(len(transactions)))
 
 
-
   
-st.title('Analisis Tranjjjsaksi ')
+st.title('Analisis Transaksi ')
 selected_item = st.selectbox('Pilih produk:', unique_items)
 selected_item_counts = transaction_matrix[transaction_matrix[selected_item] == 1].sum()
 total_transactions = len(transaction_matrix)
@@ -29,7 +28,7 @@ css_style = "background-color: green; padding: 10px; border-radius: 10px; max-wi
 
 st.markdown(
         f"<div style='{css_style}'>"
-        f"<p style='text-align: left; color: white;margin:auto;margin-left:43px; font-size: 16px;'>{max_percentage_item}</p>"
+        f"<p style='text-align: left; color: white;margin:auto;margin-left:43px; font-size: 16px;'>{max_percentage_item}%</p>"
         "</div><br>",
         unsafe_allow_html=True,
     )

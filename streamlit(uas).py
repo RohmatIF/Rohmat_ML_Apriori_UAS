@@ -9,8 +9,10 @@ transactions = list(itemsets)
 unique_items = list(set(item for sublist in itemsets for item in sublist))
 transaction_matrix = pd.DataFrame(0, columns=unique_items, index=range(len(transactions)))
 
+for i, transaction in enumerate(transactions):
+  transaction_matrix.loc[i, transaction] = 1
 
-
+  
 st.title('Analisis Transaksi ')
 selected_item = st.selectbox('Pilih produk:', unique_items)
 selected_item_counts = transaction_matrix[transaction_matrix[selected_item] == 1].sum()
@@ -34,9 +36,7 @@ st.markdown(
     )
 
 st.markdown("<h3 style='text-align: left;'>Tabel Relasi</h3>", unsafe_allow_html=True)
-
-st.table(percentage_likelihood.reset_index().rename(columns={'index': 'Nama Item', 0: 'Persentase Kemunculan'}).sort_values(by='Persentase Kemunculan', ascending=False).reset_index(drop=True).style.format({'Persentase Kemunculan': '{:.2f}%'}))
-
     
+st.table(percentage_likelihood.reset_index().rename(columns={'index': 'Nama Item', 0: 'Persentase Kemunculan'}).sort_values(by='Persentase Kemunculan', ascending=False).reset_index(drop=True).style.format({'Persentase Kemunculan': '{:.2f}%'}))
 
 

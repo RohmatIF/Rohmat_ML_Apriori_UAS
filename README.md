@@ -5,18 +5,26 @@
 ### Kelas : TIF Pagi B
 
 ## Domain Proyek
-
+Grocery store, atau yang dikenal juga sebagai supermarket, merupakan toko ritel yang utamanya menjual makanan dan barang-barang kebutuhan sehari-hari lainnya. Ini adalah jenis toko di mana pelanggan dapat membeli berbagai macam barang sehari-hari, termasuk buah dan sayuran segar, daging, produk susu, barang kemasan.
 
 ## Business Understanding
+Toko ingin mempermudah pelanggan dalam membeli produk, dengan mengetahui produk pertama yang di beli oleh pelanggan lalu memprediksi barang kedua yang akan di belinya.
 
 
-### Problem Statments
+### Problem Statements
+
+
 
 
 ### Goals
 
+
+
+
   
 ### Solution statements
+
+
 
 
 ## Data Understanding
@@ -36,6 +44,7 @@ Berikut adalah items-items yang ada di dalam dataset Grocery Store Data Set
 - BREAD (Roti)
 - BISCUIT (Biskuit)
 - MILK (Susu)
+  
 Semua Bertipe data Object
 
 
@@ -213,16 +222,18 @@ df.head(5)
 
 ## modeling
 
-
+Langkah pertama adalah menerapkan algoritma apriori
 ```bash
 frequency = apriori(df,min_support = 0.15,use_colnames = True,verbose = 1)
 frequency
 ```
 
+
 ```bash
 rules =  association_rules(frequency,metric = 'lift',min_threshold = 0.8)
 rules
 ```
+
 
 ```bash
 rules['antecedents']=rules['antecedents'].apply(lambda a: ','.join(list(a)))
@@ -231,9 +242,11 @@ rules['rule'] = rules.index
 rules
 ```
 
+
 ```bash
 rules.sort_values('lift',ascending = False).head(5)
 ```
+
 
 ```bash
 rules.sort_values('confidence',ascending = False).head(5)

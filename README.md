@@ -15,16 +15,13 @@ Toko ingin mempermudah pelanggan dalam membeli produk, dengan mengetahui produk 
 - Pelanggan kesulitan mencari barang
 - Toko kesulitan di dalam memilih produk yang ingin di tambah stok nya
 
-
-
 ### Goals
+- Ingin mempermudah pelanggan di dalam mencari barang
+- Menambah wawasan mengenai produk apa yang sering di beli pelanggan
 
-
-
-
-  
 ### Solution statements
-
+- Melakukan algoritma apriori untuk memprediksi barang selanjutnya yang akan di beli pelanggan
+- Mendapatkan wawasan mengenai frekuensi terjual nya produk
 
 
 

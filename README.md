@@ -306,6 +306,14 @@ fig.show()
 ```
 ![newplot (1)](https://github.com/RohmatIF/Rohmat_ML_Apriori_UAS/assets/147891420/86814b0f-3818-4798-a182-446d178f9af6)
 
+
+## Deployment
+
+[streamlit('https://rohmatmlaprioriuas-if.streamlit.app/')]
+
+![Screenshot 2024-01-02 185811](https://github.com/RohmatIF/Rohmat_ML_Apriori_UAS/assets/147891420/68de9020-9d1e-414c-9daa-cdad5b5f4930)
+
+
 Confidence tertinggi yaitu 1.0 yakni oleh Coffee
 
 

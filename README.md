@@ -258,6 +258,7 @@ support_table = rules.pivot(index='consequents', columns='antecedents', values='
 support_table.shape
 ```
 
+
 ```bash
 fig=ff.create_annotated_heatmap(support_table.to_numpy().round(2),x=list(support_table.columns),y=list(support_table.index),colorscale=['violet','indigo','blue'],font_colors=['white','white','white'])
 fig.update_layout(template='simple_white',
@@ -279,8 +280,7 @@ fig.update_traces(showscale=True)
 fig.show()
 ```
 ![newplot](https://github.com/RohmatIF/Rohmat_ML_Apriori_UAS/assets/147891420/c7265a0c-579b-452e-99e0-efdf213f77e0)
-
-
+support tertinggi yaitu 0,2 yakni Bread , bread , coffe , cornflakes , maggi , milk , sugar dan tea.
 
 
 ```bash

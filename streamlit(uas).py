@@ -28,7 +28,7 @@ css_style = "background-color: green; padding: 10px; border-radius: 10px; max-wi
 
 st.markdown(
         f"<div style='{css_style}'>"
-        f"<p style='text-align: left; color: white;margin:auto;margin-left:43px; font-size: 16px;'>Selanjutnya pelanggan akan membeli {max_percentage_item}</p>"
+        f"<p style='text-align: left; color: white;margin:auto;margin-left:43px; font-size: 16px;'>{max_percentage_item}</p>"
         "</div><br>",
         unsafe_allow_html=True,
     )

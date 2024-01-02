@@ -8,11 +8,12 @@
 Grocery store, atau yang dikenal juga sebagai supermarket, merupakan toko ritel yang utamanya menjual makanan dan barang-barang kebutuhan sehari-hari lainnya. Ini adalah jenis toko di mana pelanggan dapat membeli berbagai macam barang sehari-hari, termasuk buah dan sayuran segar, daging, produk susu, barang kemasan.
 
 ## Business Understanding
-Toko ingin mempermudah pelanggan dalam membeli produk, dengan mengetahui produk pertama yang di beli oleh pelanggan lalu memprediksi barang kedua yang akan di belinya.
+Toko ingin mempermudah pelanggan dalam membeli produk, dengan mengetahui produk pertama yang di beli oleh pelanggan lalu memprediksi barang kedua yang akan di belinya.Lalu setelah itu toko membuat tempat barang tersebut berdeketan sehingga mempermudah pelanggan di dalam mencari nya.
 
 
 ### Problem Statements
-
+- Pelanggan kesulitan mencari barang
+- Toko kesulitan di dalam memilih produk yang ingin di tambah stok nya
 
 
 

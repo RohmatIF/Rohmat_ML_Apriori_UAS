@@ -9,12 +9,6 @@ transactions = list(itemsets)
 unique_items = list(set(item for sublist in itemsets for item in sublist))
 transaction_matrix = pd.DataFrame(0, columns=unique_items, index=range(len(transactions)))
 
-for i, transaction in enumerate(transactions):
-    try:
-        items = transaction.split(',')
-        transaction_matrix.loc[i, items] = 1
-    except AttributeError as e:
-        st.write(f"Error in transaction {i + 1}: {e}")
 
 
   
@@ -35,14 +29,10 @@ css_style = "background-color: green; padding: 10px; border-radius: 10px; max-wi
 
 st.markdown(
         f"<div style='{css_style}'>"
-        f"<p style='text-align: left; color: white;margin:auto;margin-left:43px; font-size: 16px;'>{max_percentage_item} {max_percentage_value:.2f}%</p>"
+        f"<p style='text-align: left; color: white;margin:auto;margin-left:43px; font-size: 16px;'>{max_percentage_item}</p>"
         "</div><br>",
         unsafe_allow_html=True,
     )
 
-st.markdown("<h3 style='text-align: left;'>Tabel Relasi</h3>", unsafe_allow_html=True)
 
-st.table(percentage_likelihood.reset_index().rename(columns={'index': 'Nama Item', 0: 'Persentase Kemunculan'}).sort_values(by='Persentase Kemunculan', ascending=False).reset_index(drop=True).style.format({'Persentase Kemunculan': '{:.2f}%'}))
-
-    
 

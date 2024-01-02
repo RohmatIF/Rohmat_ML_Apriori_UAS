@@ -11,7 +11,7 @@ transaction_matrix = pd.DataFrame(0, columns=unique_items, index=range(len(trans
 
 for i, transaction in enumerate(transactions):
   for item in transaction:
-    transaction_matrix.loc[i, transaction] = 1
+    transaction_matrix.loc[i, transaction] 
 
   
 st.title('Analisis Transaksi ')

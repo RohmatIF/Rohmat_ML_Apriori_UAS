@@ -10,8 +10,11 @@ unique_items = list(set(item for sublist in itemsets for item in sublist))
 transaction_matrix = pd.DataFrame(0, columns=unique_items, index=range(len(transactions)))
 
 for i, transaction in enumerate(transactions):
-    items = transaction.split(',')
-    transaction_matrix.loc[i, items] = 1
+    try:
+        items = transaction.split(',')
+        transaction_matrix.loc[i, items] = 1
+    except AttributeError as e:
+        st.write(f"Error in transaction {i + 1}: {e}")
 
 
   

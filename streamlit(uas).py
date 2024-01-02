@@ -10,8 +10,6 @@ unique_items = list(set(item for sublist in itemsets for item in sublist))
 transaction_matrix = pd.DataFrame(0, columns=unique_items, index=range(len(transactions)))
 
 
-
-  
 st.title('Analisis Transaksi ')
 selected_item = st.selectbox('Pilih produk:', unique_items)
 selected_item_counts = transaction_matrix[transaction_matrix[selected_item] == 1].sum()

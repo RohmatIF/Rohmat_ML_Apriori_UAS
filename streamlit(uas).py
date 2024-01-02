@@ -34,6 +34,9 @@ st.markdown(
     )
 
 st.markdown("<h3 style='text-align: left;'>Tabel Relasi</h3>", unsafe_allow_html=True)
+
+st.table(percentage_likelihood.reset_index().rename(columns={'index': 'Nama Item', 0: 'Persentase Kemunculan'}).sort_values(by='Persentase Kemunculan', ascending=False).reset_index(drop=True).style.format({'Persentase Kemunculan': '{:.2f}%'}))
+
     
 
 
